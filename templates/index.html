@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mental Health Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    form {
+      margin-bottom: 2rem;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .result {
+      background: #e8f5e9;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Mental Health Text Classifier</h2>
+  <form method="POST" action="/">
+    <label for="text">Enter your thoughts:</label>
+    <textarea id="text" name="text" rows="4" required></textarea>
+    <button type="submit">Analyze</button>
+  </form>
+
+  {% if result %}
+  <div class="result">
+    <h3>Prediction Result:</h3>
+    <p><strong>Condition:</strong> {{ result.condition }}</p>
+    <p><strong>Risk Level:</strong> {{ result.risk }}</p>
+    <p><strong>Sentiment:</strong> {{ result.sentiment }}</p>
+  </div>
+  {% endif %}
+</body>
+</html>
